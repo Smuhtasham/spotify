@@ -60,7 +60,10 @@ const LogedinLeftpanel = () => {
           <div className="flex flex-col gap-2">
             {songs.map((song, index) => {
               return (
-                <div className="flex text-white gap-2 items-center " key={index}>
+                <div
+                  className="flex text-white gap-2 items-center "
+                  key={index}
+                >
                   <img src={song.imgSrc} width={40} alt="" />
                   {song.name}
                 </div>

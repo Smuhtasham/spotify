@@ -47,7 +47,7 @@ const dummyData = [
 
 const Dashboard = () => {
   const session = useSession();
-  console.log(session)
+  console.log(session);
   return (
     <>
       <div className=" bg-[#121212] px-6 flex flex-col">
@@ -68,7 +68,7 @@ const Dashboard = () => {
               {dummyData.map((data, index) => {
                 return (
                   <SwiperSlide key={index}>
-                      <HomeCard data={data}/>
+                    <HomeCard data={data} />
                   </SwiperSlide>
                 );
               })}
@@ -92,14 +92,13 @@ const Dashboard = () => {
               {dummyData.map((data, index) => {
                 return (
                   <SwiperSlide key={index}>
-                    <Card data={data}/>
+                    <Card data={data} />
                   </SwiperSlide>
                 );
               })}
             </Swiper>
           </div>
         </div>
-        
       </div>
     </>
   );

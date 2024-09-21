@@ -43,7 +43,7 @@ const LoginPage = () => {
         redirect: false,
       });
       if (res?.ok) {
-        console.log(session)
+        console.log(session);
         router.replace("/home");
       } else {
         console.log(res.error);
@@ -56,8 +56,7 @@ const LoginPage = () => {
   const GoogleSignIn = async () => {
     try {
       const res = await signIn("google", { redirect: false });
-      if (session.status=="authenticated") {
-        
+      if (session.status == "authenticated") {
         router.push("/home");
       } else {
         console.log(res.error);
@@ -69,7 +68,7 @@ const LoginPage = () => {
   const FacebookSignIn = async () => {
     try {
       const res = await signIn("facebook");
-      if (session.status=="authenticated") {
+      if (session.status == "authenticated") {
         router.push("/home");
       } else {
         console.log(res.error);
@@ -78,7 +77,7 @@ const LoginPage = () => {
       console.log(error);
     }
   };
-  
+
   return (
     <div className="w-[750px] m-auto my-6 rounded-2xl bg-[#121212]">
       <div className="w-[40%] m-auto flex flex-col justify-center gap-4 py-6">
@@ -88,7 +87,7 @@ const LoginPage = () => {
 
         <div className="text-2xl font-bold text-center">Login to Spotify</div>
         <button
-        onClick={FacebookSignIn}
+          onClick={FacebookSignIn}
           type="button"
           className="flex items-center text-white border border-[#B3B3B3] rounded-3xl py-2 pl-6 gap-10 text-sm font-semibold"
         >
