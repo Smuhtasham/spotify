@@ -1,17 +1,17 @@
-"use client"
+"use client";
 import React, { useState } from "react";
 import { FaSpotify } from "react-icons/fa";
 import Search from "./Search";
 import { CiBellOn } from "react-icons/ci";
 import { MdOutlineDownloading } from "react-icons/md";
-import UserDrop from '../Components/UserDrop'
+import UserDrop from "../Components/UserDrop";
 import { FaRegUserCircle } from "react-icons/fa";
 import { useSession } from "next-auth/react";
-import ProfileBtn from "../Components/ProfileBtn"
+import ProfileBtn from "../Components/ProfileBtn";
 
 const LoginNavbar = () => {
   const session = useSession();
-  const [ProfileDropDown,setProfileDropDown]= useState(false);
+  const [ProfileDropDown, setProfileDropDown] = useState(false);
   return (
     <>
       <div>
@@ -42,22 +42,24 @@ const LoginNavbar = () => {
               </div>
             </div>
             <div className="flex gap-6 items-center">
-              <div >
+              <div>
                 <CiBellOn size={20} />
               </div>
-              <div 
-              onClick={()=>setProfileDropDown(!ProfileDropDown)} 
+              <div
+                onClick={() => setProfileDropDown(!ProfileDropDown)}
                 className=" rounded-full  cursor-pointer relative"
-                
               >
-                { session.data?.user?.loginType == "facebook" || session.data?.user?.loginType == "google"  ? <ProfileBtn /> : <FaRegUserCircle /> }
-                <UserDrop ProfileDropDown = {ProfileDropDown} />
-                
+                {session.data?.user?.loginType == "facebook" ||
+                session.data?.user?.loginType == "google" ? (
+                  <ProfileBtn />
+                ) : (
+                  <FaRegUserCircle />
+                )}
+                <UserDrop ProfileDropDown={ProfileDropDown} />
               </div>
             </div>
           </div>
         </div>
-        
       </div>
     </>
   );
