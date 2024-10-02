@@ -1,6 +1,4 @@
-import { useSession } from 'next-auth/react'
-import Image from 'next/image'
-import React from 'react'
+import { useSession } from 'next-auth/react';
 
 const ProfileBtn = () => {
     const session = useSession();

@@ -1,5 +1,4 @@
-import React, { useRef, useState } from "react";
-import { IoPlayCircleSharp } from "react-icons/io5";
+import { useRef, useState } from "react";
 
 const MusicModel = () => {
   const [play, setPlay] = useState(false);
