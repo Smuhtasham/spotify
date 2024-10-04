@@ -94,7 +94,6 @@ const MusicModel = () => {
       Audio.current.playbackRate = 1;
     }
   };
-
   const changeSong = (song) => {
     if (Audio.current) {
       Audio.current.pause();
