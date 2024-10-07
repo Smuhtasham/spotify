@@ -6,7 +6,6 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useRouter } from "next/navigation";
 import * as yup from "yup";
 
-
 const schema = yup.object().shape({
   name: yup
     .string()
@@ -21,7 +20,8 @@ const schema = yup.object().shape({
     .min(8, "Password must be at least 8 characters")
     .matches(
       /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
-      "Password must be include at least one uppercaseletter, one number, and one special character.")
+      "Password must be include at least one uppercaseletter, one number, and one special character."
+    )
     .required("Password is required"),
   confirmPassword: yup
     .string()
@@ -30,9 +30,8 @@ const schema = yup.object().shape({
 });
 
 const SignupPage = () => {
-
   const [loading, setLoading] = React.useState(false);
-  const [error, setError] = React.useState('');
+  const [error, setError] = React.useState("");
 
   const {
     register,
@@ -43,34 +42,34 @@ const SignupPage = () => {
     mode: "onBlur",
   });
 
-const router = useRouter();
+  const router = useRouter();
 
-const onSubmit = async (data) => {
-  const { name, email, password } = data;
-  setLoading(true); 
-  setError('');
+  const onSubmit = async (data) => {
+    const { name, email, password } = data;
+    setLoading(true);
+    setError("");
 
-  try {
-    const res = await fetch('/api/register', {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ name, email, password })
-    });
+    try {
+      const res = await fetch("/api/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name, email, password }),
+      });
 
-    if (res.ok) {
-      router.push("/login");
-    } else {
-      const response = await res.json();
-      setError(response.message || "Registration failed.");
+      if (res.ok) {
+        router.push("/login");
+      } else {
+        const response = await res.json();
+        setError(response.message || "Registration failed.");
+      }
+    } catch (error) {
+      setError("Error during registration.");
+    } finally {
+      setLoading(false);
     }
-  } catch (error) {
-    setError("Error during registration.");
-  } finally {
-    setLoading(false);
-  }
-};
+  };
 
   return (
     <>
@@ -80,11 +79,13 @@ const onSubmit = async (data) => {
             <img src="/spotify.svg" alt="Spotify Logo" />
           </Link>
 
-          <div className="text-2xl font-bold text-center ">Signup to Spotify</div>
+          <div className="text-2xl font-bold text-center ">
+            Signup to Spotify
+          </div>
 
           <button
             type="button"
-            onClick={() => signIn('facebook')}
+            onClick={() => signIn("facebook")}
             className="flex items-center text-white border border-[#B3B3B3] rounded-3xl py-2 pl-6 gap-10  text-sm font-semibold"
           >
             <img src="/facebook.svg" alt="Facebook Icon" />
@@ -101,7 +102,7 @@ const onSubmit = async (data) => {
 
           <button
             type="button"
-            onClick={() => signIn('google')}
+            onClick={() => signIn("google")}
             className="flex items-center text-white border border-[#B3B3B3] rounded-3xl py-2 pl-6 gap-11  text-sm font-semibold"
           >
             <img src="/google.svg" width={20} height={20} alt="Google Icon" />
