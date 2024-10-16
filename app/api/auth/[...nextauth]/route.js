@@ -80,7 +80,6 @@ const authOptions = {
       console.log("JWT Token:", token);
       return token;
     },
-
     async session({ session, token }) {
       session.user.id = token.userId;
       session.user.email = token.email;
